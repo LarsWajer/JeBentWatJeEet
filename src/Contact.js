@@ -3,8 +3,12 @@ import React from 'react';
 function Contact() {
   return (
     <div class='container'>
-      <h1>Dagboek pagina</h1>
-      <p>Dit is de dagboek pagina.</p>
+      <div className="dashboard">
+        <div className="widget">
+          <h2>Dagboek pagina</h2>
+          <p>Hier vindt je jou eigen schema in je dagboek.</p>
+        </div>
+      </div>
     </div>
   );
 }

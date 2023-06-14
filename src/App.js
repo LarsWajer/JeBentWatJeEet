@@ -37,6 +37,7 @@ function App() {
         <img src="/jbwjelogo.png" alt="logo" />
         </div>
         <div className="logo-middle">
+        <h2>JBWJE</h2>
         </div>
         <div className="logo-right">
         <img className='profile' src="/profile.png" alt="logo" />

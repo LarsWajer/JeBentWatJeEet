@@ -3,8 +3,12 @@ import React from 'react';
 function About() {
   return (
     <div class='container'>
-      <h1>Recepten pagina</h1>
-      <p>Dit is de recepten pagina</p>
+      <div className="dashboard">
+        <div className="widget">
+        <h2>Recepten pagina</h2>
+          <p>Hier vindt je alle recepten die je kan toevoegen aan je dagboek.</p>
+        </div>
+      </div>
     </div>
   );
 }
