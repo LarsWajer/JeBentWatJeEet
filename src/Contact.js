@@ -3,8 +3,8 @@ import React from 'react';
 function Contact() {
   return (
     <div class='container'>
-      <h1>Contact Page</h1>
-      <p>This is the Contact page.</p>
+      <h1>Dagboek pagina</h1>
+      <p>Dit is de dagboek pagina.</p>
     </div>
   );
 }

@@ -34,13 +34,12 @@ function App() {
       {showTransition && <div className="page-transition" />}
       <nav className="top-navbar">
         <div className="logo-left">
-          <h1>profile</h1>
+        <img src="/jbwjelogo.png" alt="logo" />
         </div>
         <div className="logo-middle">
-          <h1>JBWJE</h1>
         </div>
         <div className="logo-right">
-        <img src="/jbwjelogo.png" alt="logo" />
+        <img className='profile' src="/profile.png" alt="logo" />
         </div>
       </nav>
       {renderPage()}

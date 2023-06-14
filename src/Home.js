@@ -1,12 +1,24 @@
 import React from 'react';
 
 function Home() {
-    return (
-        <div class='container'>
-          <h1>Home Page</h1>
-          <p>Dit is de homepagina van jbwje</p>
+  return (
+    <div className="container">
+      <div className="dashboard">
+        <div className="widget">
+          <h2>Widget 1</h2>
+          <p>Widget 1 content</p>
         </div>
-      );
+        <div className="widget">
+          <h2>Widget 2</h2>
+          <p>Widget 2 content</p>
+        </div>
+        <div className="widget">
+          <h2>Widget 3</h2>
+          <p>Widget 3 content</p>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default Home;
