@@ -53,6 +53,21 @@ button {
   padding: 5px 10px;
 }
 
+.homebutton{
+  filter: brightness(50%);
+
+}
+
+.receptenbutton{
+  filter: brightness(50%);
+
+}
+
+.dagboekbutton{
+  filter: brightness(50%);
+
+}
+
 .container {
   text-align: center;
 }
