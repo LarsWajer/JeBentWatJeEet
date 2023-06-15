@@ -1,6 +1,6 @@
 import React from 'react';
 
-function About() {
+function Recepten() {
   return (
     <div class='container'>
       <div className="dashboard">
@@ -13,4 +13,4 @@ function About() {
   );
 }
 
-export default About;
+export default Recepten;

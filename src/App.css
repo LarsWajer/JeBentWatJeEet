@@ -7,6 +7,52 @@
   background-image: url('background2.jpg');
 }
 
+.week-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.week-table th {
+  padding: 10px;
+  background-color: #f2f2f2;
+  text-align: center;
+  font-weight: bold;
+}
+
+.week-table td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ccc;
+  background-color: #f2f2f2;
+}
+
+.week-table .highlighted {
+  background-color: #92E37C;
+  color: white;
+}
+
+.week-table th:first-child,
+.week-table td:first-child {
+  border-left: none;
+}
+
+.week-table th:last-child,
+.week-table td:last-child {
+  border-right: none;
+}
+
+.week-table tr:last-child td {
+  border-bottom: none;
+}
+
+@media (max-width: 600px) {
+  .week-table th,
+  .week-table td {
+    padding: 5px;
+    font-size: 12px;
+  }
+}
 img{
   width: 40%;
   height: 40%;
@@ -127,8 +173,7 @@ button:active {
   padding: 20px;
   background-color: #f2f2f2;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;}
 
 @media (max-width: 768px) {
   .widget {

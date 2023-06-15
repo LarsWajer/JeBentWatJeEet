@@ -29,8 +29,9 @@ const Home = () => {
           </div>
         </div>
         <div className="widget">
-          <h2>Recepten</h2>
-          <p>Widget 2 content</p>
+          <h2>Planning</h2>
+          <p>De gekozen planning voor vandaag:</p>
+          
         </div>
         <div className="widget">
           <h2>Dagboek</h2>
