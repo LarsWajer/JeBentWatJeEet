@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import Home from './Home';
-import About from './About';
-import Contact from './Contact';
+import Recepten from './Recepten';
+import Dagboek from './Dagboek';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -12,10 +12,10 @@ function App() {
     switch (currentPage) {
       case 'home':
         return <Home />;
-      case 'about':
-        return <About />;
-      case 'contact':
-        return <Contact />;
+      case 'recepten':
+        return <Recepten />;
+      case 'dagboek':
+        return <Dagboek />;
       default:
         return <Home />;
     }
@@ -34,26 +34,36 @@ function App() {
       {showTransition && <div className="page-transition" />}
       <nav className="top-navbar">
         <div className="logo-left">
-          <h1>profile</h1>
+          <img src="/jbwjelogo.png" alt="logo" />
         </div>
         <div className="logo-middle">
-          <h1>JBWJE</h1>
+          <h2>JBWJE</h2>
         </div>
         <div className="logo-right">
-          <img src="/jbwjelogo.png" alt="logo" />
+          <img className="profile" src="/profile.png" alt="logo" />
         </div>
       </nav>
       {renderPage()}
       <nav className="bottom-navbar">
         <ul>
           <li>
-            <button onClick={() => setCurrentPage('home')}>Home</button>
+            <button onClick={() => setCurrentPage('home')}>
+              <img src="/home (1).png" alt="home" class="homebutton" />
+            </button>
           </li>
           <li>
-            <button onClick={() => setCurrentPage('about')}>Recepten</button>
+            <button onClick={() => setCurrentPage('recepten')}>
+              <img
+                src="/recipe-book.png"
+                alt="recepten"
+                class="receptenbutton"
+              />
+            </button>
           </li>
           <li>
-            <button onClick={() => setCurrentPage('contact')}>Dagboek</button>
+            <button onClick={() => setCurrentPage('dagboek')}>
+              <img src="/open-book.png" alt="dagboek" class="dagboekbutton" />
+            </button>
           </li>
         </ul>
       </nav>

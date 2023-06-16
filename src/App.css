@@ -4,11 +4,72 @@
   align-items: center;
   justify-content: center;
   height: 80vh;
+  background-image: url('background2.jpg');
+}
+
+.week-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.week-table th {
+  padding: 10px;
+  background-color: #f2f2f2;
+  text-align: center;
+  font-weight: bold;
+}
+
+.week-table td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ccc;
   background-color: #f2f2f2;
 }
 
+.week-table .highlighted {
+  background-color: #92E37C;
+  color: white;
+}
+
+.week-table th:first-child,
+.week-table td:first-child {
+  border-left: none;
+}
+
+.week-table th:last-child,
+.week-table td:last-child {
+  border-right: none;
+}
+
+.week-table tr:last-child td {
+  border-bottom: none;
+}
+
+@media (max-width: 600px) {
+  .week-table th,
+  .week-table td {
+    padding: 5px;
+    font-size: 12px;
+  }
+}
 img{
-  width: 150px;
+  width: 40%;
+  height: 40%;
+  object-fit: cover;
+}
+
+.profile{
+  width: 10%;
+  height: 10%;
+  object-fit: cover;
+  float: right;
+}
+
+.time {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
 }
 
 .App {
@@ -38,14 +99,31 @@ button {
   padding: 5px 10px;
 }
 
+.homebutton{
+  filter: brightness(50%);
+
+}
+
+.receptenbutton{
+  filter: brightness(50%);
+
+}
+
+.dagboekbutton{
+  filter: brightness(50%);
+
+}
+
 .container {
   text-align: center;
 }
 
-ul li:hover {
-  background-color: #92E37C;
-  color: white;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+button:hover {
+  color: #92E37C;
+}
+
+button:active {
+  color: #92E37C;
 }
 
 .top-navbar {
@@ -68,7 +146,6 @@ ul li:hover {
 }
 
 .logo-middle img {
-  height: 30px;
   margin-right: 5px;
 }
 
@@ -82,6 +159,43 @@ ul li:hover {
   padding: 10px;
   height: 60px;
 }
+
+.dashboard {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.widget {
+  width: 200px;
+  height: 200px;
+  margin: 10px;
+  padding: 20px;
+  background-color: #f2f2f2;
+  border-radius: 8px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;}
+
+@media (max-width: 768px) {
+  .widget {
+    width: 100%;
+    height: auto;
+    margin: 10px 0;
+    padding: 10px;
+  }
+  img{
+    width: 70%;
+    height: 60%;
+    object-fit: cover;
+  }
+  
+  .profile{
+    width: 30%;
+    height: 30%;
+    object-fit: cover;
+    float: right;
+  }
+}
+
 .page-transition {
   position: absolute;
   top: 0;
