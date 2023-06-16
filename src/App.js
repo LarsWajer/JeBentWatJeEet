@@ -40,7 +40,7 @@ function App() {
           <h1>JBWJE</h1>
         </div>
         <div className="logo-right">
-        <img src="/jbwjelogo.png" alt="logo" />
+          <img src="/jbwjelogo.png" alt="logo" />
         </div>
       </nav>
       {renderPage()}
