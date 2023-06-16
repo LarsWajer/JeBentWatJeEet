@@ -40,13 +40,13 @@ function Dagboek() {
               <th className={getDayClassName(index)}>
                 {day}
               </th>
-              <td className={index === currentDayIndex ? getSectionClassName('Morning') : ''}>
+              <td className={index === currentDayIndex ? getSectionClassName('ochtend') : ''}>
                 Morning content for {day}
               </td>
-              <td className={index === currentDayIndex ? getSectionClassName('Afternoon') : ''}>
+              <td className={index === currentDayIndex ? getSectionClassName('middag') : ''}>
                 Afternoon content for {day}
               </td>
-              <td className={index === currentDayIndex ? getSectionClassName('Evening') : ''}>
+              <td className={index === currentDayIndex ? getSectionClassName('avond') : ''}>
                 Evening content for {day}
               </td>
             </tr>
