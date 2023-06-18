@@ -12,16 +12,16 @@ const recipes = [
     category: 'dinner',
     key: uuidv4(),
   },
-  // {
-  //   name: 'cruesli',
-  //   category: 'breakfast',
-  //   key: uuidv4(),
-  // },
-  // {
-  //   name: 'bread',
-  //   category: 'lunch',
-  //   key: uuidv4(),
-  // },
+  {
+    name: 'cruesli',
+    category: 'breakfast',
+    key: uuidv4(),
+  },
+  {
+    name: 'bread',
+    category: 'lunch',
+    key: uuidv4(),
+  },
 ];
 function Recepten() {
   return (
@@ -29,8 +29,13 @@ function Recepten() {
       {recipes.map((recipe) => (
         <div className="dashboard">
           <div className="widget">
-            <h1 className="recipeName"> {recipe.name}</h1>
-            <h2 className="recipeCategory"> {recipe.category}</h2>
+            <div className="nameContainer">
+              <h1 className="recipeName"> {recipe.name}</h1>
+            </div>
+            <div className="line"></div>
+            <div className="categoryContainer">
+              <h2 className="recipeCategory"> Categorie: {recipe.category}</h2>
+            </div>
           </div>
         </div>
       ))}
