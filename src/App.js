@@ -3,6 +3,7 @@ import './App.css';
 import Home from './Home';
 import Recepten from './Recepten';
 import Dagboek from './Dagboek';
+import Profile from './Profile';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -16,6 +17,8 @@ function App() {
         return <Recepten />;
       case 'dagboek':
         return <Dagboek />;
+      case 'Profile':
+        return <Profile />;
       default:
         return <Home />;
     }
@@ -40,7 +43,9 @@ function App() {
           <h2>JBWJE</h2>
         </div>
         <div className="logo-right">
-          <img className="profile" src="/profile.png" alt="logo" />
+        <button onClick={() => setCurrentPage('Profile')}>
+          <img src="/profile.png" alt="profile" class="profile" />
+        </button>        
         </div>
       </nav>
       {renderPage()}
