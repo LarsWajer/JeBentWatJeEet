@@ -6,7 +6,7 @@ const Profile = () => {
   const { userData, logout } = useContext(UserContext);
 
   if (userData === null) {
-    return <p>Loading...</p>; // Add a loading state or redirect the user if needed
+    return <p>Loading...</p>; 
   }
 
   return (
@@ -19,7 +19,7 @@ const Profile = () => {
               src='profile.png'
               alt='Profile'
             />
-            <h2 className='profile-name'>Welcome, {userData.name}!</h2>
+            <h2 className='profile-name'>Welkom, {userData.name}!</h2>
             <p className='profile-email'>Email: {userData.email}</p>
             <button className='logoutButton' onClick={logout}>
               Logout
