@@ -8,8 +8,13 @@ const Home = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       const currentDate = new Date();
-      const currentTime = currentDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-      const currentDayOfWeek = currentDate.toLocaleDateString([], { weekday: 'long' });
+      const currentTime = currentDate.toLocaleTimeString([], {
+        hour: '2-digit',
+        minute: '2-digit',
+      });
+      const currentDayOfWeek = currentDate.toLocaleDateString([], {
+        weekday: 'long',
+      });
 
       setTime(currentTime);
       setDayOfWeek(currentDayOfWeek);
@@ -70,7 +75,6 @@ const Home = () => {
           </div>
           <p>Streak: {streak}</p>
         </div>
-
       </div>
     </div>
   );

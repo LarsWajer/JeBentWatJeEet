@@ -112,6 +112,8 @@ button {
 
 .container {
   text-align: center;
+  padding-bottom: 200px;
+  padding-top: 300px;
 }
 
 button:hover {
@@ -172,9 +174,11 @@ button:active {
   border-radius: 8px;
   margin-top: 60px;
 }
-
+.extraContent {
+  max-width: 80vw;
+  word-wrap: break-word;
+}
 .widget {
-  height: 200px;
   background-color: #f2f2f2;
   border-radius: 8px;
   width: 60vw;
@@ -192,12 +196,32 @@ button:active {
   text-align: center;
 }
 .recipeName {
+  word-wrap: break-word;
   color: black;
   font-size: 25px;
 }
 .recipeCategory {
+  word-wrap: break-word;
   font-size: 15px;
   padding-left: 10px;
+}
+.displayButton {
+  width: 80px;
+  height: 50px;
+  background-image: url('./onderkant.png');
+  margin: 0px;
+  padding: 0px;
+  margin-top: 30px;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.buttonHolder {
+  display: grid;
+  width: 100%;
+  justify-content: center;
+}
+.extraContent {
+  margin-left: 10px;
 }
 
 @media (max-width: 768px) {
