@@ -7,8 +7,13 @@ const Home = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       const currentDate = new Date();
-      const currentTime = currentDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-      const currentDayOfWeek = currentDate.toLocaleDateString([], { weekday: 'long' });
+      const currentTime = currentDate.toLocaleTimeString([], {
+        hour: '2-digit',
+        minute: '2-digit',
+      });
+      const currentDayOfWeek = currentDate.toLocaleDateString([], {
+        weekday: 'long',
+      });
 
       setTime(currentTime);
       setDayOfWeek(currentDayOfWeek);
@@ -23,7 +28,9 @@ const Home = () => {
     <div className="container">
       <div className="dashboard">
         <div className="widget">
-          <h2><span className="day">{dayOfWeek}</span></h2>
+          <h2>
+            <span className="day">{dayOfWeek}</span>
+          </h2>
           <div className="clock">
             <span className="time">{time}</span>
           </div>
@@ -31,7 +38,6 @@ const Home = () => {
         <div className="widget">
           <h2>Planning</h2>
           <p>De gekozen planning voor vandaag:</p>
-          
         </div>
         <div className="widget">
           <h2>Dagboek</h2>

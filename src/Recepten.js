@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 // import axios from 'axios';
 const recipes = [
@@ -24,8 +24,25 @@ const recipes = [
   },
 ];
 function Recepten() {
+  const [isVisible, setIsVisible] = useState(false);
+  const handleButtonClick = () => {
+    setIsVisible(!isVisible);
+  };
+
+  // const buttonStyle = {
+  //   backgroundImage: isVisible
+  //     ? "url('./onderkant.png')"
+  //     : "url('./bovenkant.png')",
+  //   backgroundSize: 'contain',
+  //   backgroundRepeat: 'no-repeat',
+  //   width: '80px',
+  //   height: '50px',
+  //   margin: '0px',
+  //   padding: '0px',
+  //   marginTop: '30px',
+  // };
   return (
-    <div class="container">
+    <div className="container">
       {recipes.map((recipe) => (
         <div className="dashboard">
           <div className="widget">
@@ -36,8 +53,13 @@ function Recepten() {
             <div className="categoryContainer">
               <h2 className="recipeCategory"> Categorie: {recipe.category}</h2>
             </div>
+            {isVisible && <div className="extraContent">{recipe.key}</div>}
             <div className="buttonHolder">
-              <button className="displayButton"></button>
+              <button
+                onClick={handleButtonClick}
+                //style={buttonStyle}
+                className="displayButton"
+              ></button>
             </div>
           </div>
         </div>
