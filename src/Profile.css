@@ -1,0 +1,39 @@
+.profile-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .profile-info {
+    margin-top: 20px;
+  }
+  
+  .profile-picture {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }
+  
+  .profile-title {
+    color: black;
+  }
+  
+  .profile-name {
+    color: black;
+  }
+  
+  .profile-email,
+  .profile-password {
+    color: black;
+  }
+  
+  .card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+    width: 400px;
+  }
