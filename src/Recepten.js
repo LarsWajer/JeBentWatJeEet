@@ -1,6 +1,6 @@
 import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import axios from 'axios';
+// import axios from 'axios';
 const recipes = [
   {
     name: 'Baked Beans',
@@ -35,6 +35,9 @@ function Recepten() {
             <div className="line"></div>
             <div className="categoryContainer">
               <h2 className="recipeCategory"> Categorie: {recipe.category}</h2>
+            </div>
+            <div className="buttonHolder">
+              <button className="displayButton"></button>
             </div>
           </div>
         </div>
