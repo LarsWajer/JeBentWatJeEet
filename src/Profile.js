@@ -5,8 +5,16 @@ import './Profile.css';
 const Profile = () => {
   const { userData, logout } = useContext(UserContext);
 
+  const deleteAccount = () => {
+    // Delete the user account from local storage
+    localStorage.removeItem('user');
+
+    // Call the logout function to clear the user data in the context
+    logout();
+  };
+
   if (userData === null) {
-    return <p>Loading...</p>; 
+    return <p>Loading...</p>;
   }
 
   return (
@@ -19,8 +27,11 @@ const Profile = () => {
               src='profile.png'
               alt='Profile'
             />
-            <h2 className='profile-name'>Welkom, {userData.name}!</h2>
+            <h2 className='profile-name'>Welcome, {userData.name}!</h2>
             <p className='profile-email'>Email: {userData.email}</p>
+            <button className='deleteButton' onClick={deleteAccount}>
+              Delete Account
+            </button>
             <button className='logoutButton' onClick={logout}>
               Logout
             </button>

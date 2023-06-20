@@ -6,6 +6,7 @@ const Register = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -14,9 +15,13 @@ const Register = () => {
     const user = {
       name: name,
       email: email,
-      password: '**********',
+      password: password,
     };
+    // Store user data in local storage
+    localStorage.setItem('user', JSON.stringify(user));
+
     login(user);
+    setSuccessMessage('Registration successful!');
   };
 
   return (
@@ -59,6 +64,7 @@ const Register = () => {
             />
           </div>
           <button className='formbutton' type='submit'>Register</button>
+          {successMessage && <p>{successMessage}</p>}
         </form>
       </div>
     </div>

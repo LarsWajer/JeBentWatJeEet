@@ -5,17 +5,20 @@ const Login = () => {
   const { login } = useContext(UserContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleLogin = (e) => {
     e.preventDefault();
     // Perform login logic here
     // Assuming the login is successful and user data is retrieved
-    const user = {
-      name: 'John Doe',
-      email: email,
-      password: '**********',
-    };
-    login(user);
+    const storedUser = JSON.parse(localStorage.getItem('user'));
+    if (storedUser && email === storedUser.email && password === storedUser.password) {
+      login(storedUser);
+      setSuccessMessage('Login successful!');
+    } else {
+      setErrorMessage('Invalid credentials. Please try again.');
+    }
   };
 
   return (
@@ -47,6 +50,8 @@ const Login = () => {
             />
           </div>
           <button className='formbutton' type='submit'>Login</button>
+          {successMessage && <p>{successMessage}</p>}
+          {errorMessage && <p>{errorMessage}</p>}
         </form>
       </div>
     </div>
