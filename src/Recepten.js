@@ -1,45 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-// import axios from 'axios';
-const recipes = [
-  {
-    name: 'Baked Beans',
-    category: 'dinner',
-    key: uuidv4(),
-  },
-  {
-    name: 'spaghetti',
-    category: 'dinner',
-    key: uuidv4(),
-  },
-  {
-    name: 'cruesli',
-    category: 'breakfast',
-    key: uuidv4(),
-  },
-];
-function Recepten() {
-  let [isVisible, setIsVisible] = useState(false);
+const Recepten = () => {
+  const [recipes, setRecipes] = useState([]);
+
+  useEffect(() => {
+    fetch('http://127.0.0.1:8000/api/recepten')
+      .then(response => response.json())
+      .then(data => {
+        const fetchedRecipes = data.map(recipe => ({
+          name: recipe.name,
+          category: recipe.categorie,
+          bereidingswijze: recipe.bereidingswijze,
+          key: uuidv4(),
+        }));
+        setRecipes(fetchedRecipes);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  }, []);
+
+  const [isVisible, setIsVisible] = useState(false);
+
   const handleButtonClick = () => {
     setIsVisible(!isVisible);
   };
 
-  // const buttonStyle = {
-  //   backgroundImage: isVisible
-  //     ? "url('./onderkant.png')"
-  //     : "url('./bovenkant.png')",
-  //   backgroundSize: 'contain',
-  //   backgroundRepeat: 'no-repeat',
-  //   width: '80px',
-  //   height: '50px',
-  //   margin: '0px',
-  //   padding: '0px',
-  //   marginTop: '30px',
-  // };
   return (
-    <div className="containerRecipe">
-      {recipes.map((recipe) => (
-        <div className="dashboard">
+    <div className="container">
+      {recipes.map(recipe => (
+        <div className="dashboard" key={recipe.key}>
           <div className="widget">
             <div className="nameContainer">
               <h1 className="recipeName"> {recipe.name}</h1>
@@ -48,11 +38,10 @@ function Recepten() {
             <div className="categoryContainer">
               <h2 className="recipeCategory"> Categorie: {recipe.category}</h2>
             </div>
-            {isVisible && <div className="extraContent">{recipe.key}</div>}
+            {isVisible && <div className="extraContent">{recipe.bereidingswijze}</div>}
             <div className="buttonHolder">
               <button
                 onClick={handleButtonClick}
-                //style={buttonStyle}
                 className="displayButton"
               ></button>
             </div>
@@ -61,6 +50,6 @@ function Recepten() {
       ))}
     </div>
   );
-}
+};
 
 export default Recepten;
