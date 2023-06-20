@@ -17,14 +17,9 @@ const recipes = [
     category: 'breakfast',
     key: uuidv4(),
   },
-  {
-    name: 'bread',
-    category: 'lunch',
-    key: uuidv4(),
-  },
 ];
 function Recepten() {
-  const [isVisible, setIsVisible] = useState(false);
+  let [isVisible, setIsVisible] = useState(false);
   const handleButtonClick = () => {
     setIsVisible(!isVisible);
   };
@@ -42,7 +37,7 @@ function Recepten() {
   //   marginTop: '30px',
   // };
   return (
-    <div className="container">
+    <div className="containerRecipe">
       {recipes.map((recipe) => (
         <div className="dashboard">
           <div className="widget">
