@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 
-
-
 const Home = () => {
   const [time, setTime] = useState('');
   const [dayOfWeek, setDayOfWeek] = useState('');
@@ -28,7 +26,7 @@ const Home = () => {
     // Check if lastVisited exists and is not older than 1 day
     if (lastVisited && isWithinOneDay(lastVisited)) {
       // Increment the streak if the last visit was within 1 day
-      setStreak(prevStreak => prevStreak + 1);
+      setStreak((prevStreak) => prevStreak + 1);
     } else {
       // Reset the streak if the last visit was more than 1 day ago
       setStreak(1);
@@ -69,18 +67,16 @@ const Home = () => {
     circle.classList.add(streak === 1 ? 'active' : 'inactive');
   }, [streak]);
 
-
   return (
-    <div className="container">
-         <div className="circle" id="circle">
-            <div class = "progress-bar"></div>
-            <span className='streak_number'>Streak: {streak}</span>
-          </div>
-      <div className="dashboard">
-        </div>
-        
-        <div className="widget">
-          <h2>
+    <div className="containerHome">
+      <div className="circle" id="circle">
+        <div class="progress-bar"></div>
+        <span className="streak_number">Streak: {streak}</span>
+      </div>
+      <div className="dashboard"></div>
+      <div className="holder">
+        <div className="widgetHome">
+          <h2 className="daytext">
             <span className="day">{dayOfWeek}</span>
           </h2>
           <div className="clock">
@@ -89,7 +85,7 @@ const Home = () => {
           {/* <p>Streak: {streak}</p> */}
         </div>
       </div>
-    
+    </div>
   );
 };
 

@@ -1,10 +1,4 @@
 .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 80vh;
-  background-image: url('background2.jpg');
 }
 
 .week-table {
@@ -106,9 +100,7 @@ button {
   filter: brightness(50%);
 }
 
-
-
-.list{
+.list {
   display: flex;
   flex-direction: column;
   word-wrap: break-word;
@@ -131,7 +123,29 @@ button {
 }
 .container {
   text-align: center;
+  height: 100vh;
+  padding-top: 200px;
+}
+
+.containerHome {
+  text-align: center;
   padding-bottom: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+  background-image: url('background2.jpg');
+}
+.containerProfile {
+  text-align: center;
+  padding-top: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+  background-image: url('background2.jpg');
 }
 
 button:hover {
@@ -199,7 +213,6 @@ button:active {
   margin-top: 60px;
 }
 .circle {
-  position: absolute;
   border-radius: 50%;
   background-color: white;
   width: 161px;
@@ -209,18 +222,15 @@ button:active {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 10px solid ;
+  border: 10px solid;
   border-color: #92e37c;
-  
 }
 
-
-
-.streak_number{
+.streak_number {
   position: absolute;
   margin: 1px;
-} */
-.extraContent {
+}
+*/ .extraContent {
   max-width: 80vw;
   word-wrap: break-word;
 }
@@ -232,9 +242,22 @@ button:active {
     rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
     rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
+.widgetHome {
+  margin-top: 150px;
+  border: 10px #92e37c;
+  background-color: #f2f2f2;
+  border-radius: 8px;
+  width: 60vw;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
 .line {
   height: 3px;
   background-color: black;
+}
+.holder {
+  border: #92e37c;
 }
 .nameContainer {
   border: #333;
@@ -277,7 +300,7 @@ button:active {
     width: 100%;
   }
 
-  .circle{
+  .circle {
     position: absolute;
     width: 161px;
     height: 147px;
@@ -285,9 +308,9 @@ button:active {
     top: 147px;
     border-radius: 50%;
     border: 10px solid #92e37c;
-    background: #FFFFFF;
+    background: #ffffff;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
- }
+  }
   .dashboard {
     width: 80vw;
   }
@@ -447,14 +470,14 @@ label {
 @keyframes streak {
   0% {
     transform: rotate(0deg);
-    border-top-color: #92E37C;
+    border-top-color: #92e37c;
   }
   50% {
     transform: rotate(180deg);
-    border-top-color: #FFC300;
+    border-top-color: #ffc300;
   }
   100% {
     transform: rotate(360deg);
-    border-top-color: #92E37C;
+    border-top-color: #92e37c;
   }
 }
