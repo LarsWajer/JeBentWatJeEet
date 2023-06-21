@@ -198,6 +198,28 @@ button:active {
   border-radius: 8px;
   margin-top: 60px;
 }
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  background-color: white;
+  width: 161px;
+  height: 147px;
+  left: 109px;
+  top: 147px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 10px solid ;
+  border-color: #92e37c;
+  
+}
+
+
+
+.streak_number{
+  position: absolute;
+  margin: 1px;
+} */
 .extraContent {
   max-width: 80vw;
   word-wrap: break-word;
@@ -254,6 +276,18 @@ button:active {
     padding-top: 10px;
     width: 100%;
   }
+
+  .circle{
+    position: absolute;
+    width: 161px;
+    height: 147px;
+    left: 109px;
+    top: 147px;
+    border-radius: 50%;
+    border: 10px solid #92e37c;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+ }
   .dashboard {
     width: 80vw;
   }
@@ -407,5 +441,20 @@ label {
 @media screen and (max-width: 992px) {
   form {
     max-width: 80%;
+  }
+}
+/*cirkel in drie delen*/
+@keyframes streak {
+  0% {
+    transform: rotate(0deg);
+    border-top-color: #92E37C;
+  }
+  50% {
+    transform: rotate(180deg);
+    border-top-color: #FFC300;
+  }
+  100% {
+    transform: rotate(360deg);
+    border-top-color: #92E37C;
   }
 }

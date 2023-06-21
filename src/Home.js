@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
+
+
 const Home = () => {
   const [time, setTime] = useState('');
   const [dayOfWeek, setDayOfWeek] = useState('');
@@ -62,9 +64,20 @@ const Home = () => {
     return daysDifference < 1;
   };
 
+  useEffect(() => {
+    const circle = document.getElementById('circle');
+    circle.classList.add(streak === 1 ? 'active' : 'inactive');
+  }, [streak]);
+
+
   return (
     <div className="container">
+         <div className="circle" id="circle">
+            <div class = "progress-bar"></div>
+            <span className='streak_number'>Streak: {streak}</span>
+          </div>
       <div className="dashboard">
+        </div>
         
         <div className="widget">
           <h2>
@@ -73,10 +86,10 @@ const Home = () => {
           <div className="clock">
             <span className="time">{time}</span>
           </div>
-          <p>Streak: {streak}</p>
+          {/* <p>Streak: {streak}</p> */}
         </div>
       </div>
-    </div>
+    
   );
 };
 
