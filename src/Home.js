@@ -1,98 +1,33 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 const Home = () => {
-  const [time, setTime] = useState('');
-  const [dayOfWeek, setDayOfWeek] = useState('');
-  const [streak, setStreak] = useState(0);
-  const [showCongratulations, setShowCongratulations] = useState(false);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      const currentDate = new Date();
-      const currentTime = currentDate.toLocaleTimeString([], {
-        hour: '2-digit',
-        minute: '2-digit',
-      });
-      const currentDayOfWeek = currentDate.toLocaleDateString([], {
-        weekday: 'long',
-      });
-
-      setTime(currentTime);
-      setDayOfWeek(currentDayOfWeek);
-    }, 1000);
-
-    // Retrieve the last visited date from localStorage
-    const lastVisited = localStorage.getItem('lastVisited');
-
-    // Check if lastVisited exists and is not older than 1 day
-    if (lastVisited && isWithinOneDay(lastVisited)) {
-      // Increment the streak if the last visit was within 1 day
-      setStreak(prevStreak => prevStreak + 1);
-
-      // Check if the streak is 7 days
-      if (streak === 6) {
-        setShowCongratulations(true);
-      }
-    } else {
-      // Reset the streak if the last visit was more than 1 day ago
-      setStreak(1);
-    }
-
-    // Update the lastVisited date in localStorage
-    localStorage.setItem('lastVisited', new Date().toISOString());
-
-    return () => {
-      clearInterval(timer);
-    };
-  }, []);
-
-  // Retrieve the streak from localStorage on component mount
-  useEffect(() => {
-    const storedStreak = localStorage.getItem('streak');
-    if (storedStreak) {
-      setStreak(parseInt(storedStreak));
-    }
-  }, []);
-
-  // Function to check if the provided date is within 1 day from the current date
-  const isWithinOneDay = dateString => {
-    const currentDate = new Date();
-    const lastVisitedDate = new Date(dateString);
-
-    // Calculate the time difference in milliseconds
-    const timeDifference = currentDate.getTime() - lastVisitedDate.getTime();
-
-    // Convert milliseconds to days
-    const daysDifference = timeDifference / (1000 * 3600 * 24);
-
-    return daysDifference < 1;
-  };
-
-  useEffect(() => {
-    const circle = document.getElementById('circle');
-    circle.classList.add(streak === 1 ? 'active' : 'inactive');
-  }, [streak]);
-
-  const handleCongratulationsClose = () => {
-    setShowCongratulations(false);
-  };
-
   return (
-    <div className="container">
-      <div className="circle" id="circle">
-        <div className="progress-bar"></div>
-        <span className="streak_number">Streak: {streak} uit 7</span>
-      </div>
+    <div className='container'>
+    <div className="landing-page">
+      <header className="header">
+        <h1>Welkom !</h1>
+        <p>Dit is de hoofdpagina van Je Bent Wat Je Eet App</p>
+      </header>
 
-      {showCongratulations && (
-        <div className="congratulations-alert">
-          <div className="congratulations-content">
-            <h3>Congratulations!</h3>
-            <p>You've reached a 7-day streak!</p>
-            <button onClick={handleCongratulationsClose}>Close</button>
-          </div>
+      <section className="features">
+        <div className="feature">
+          <img src="feature-1.png" alt="Feature 1" />
+          <h2>Feature 1</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <button className="cta-button">Sign Up</button>
+
         </div>
-      )}
+
+        <div className="feature">
+          <img src="feature-2.png" alt="Feature 2" />
+          <h2>Feature 2</h2>
+          <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+          <button className="cta-button">Sign Up</button>
+
+        </div>
+      </section>
+
+    </div>
     </div>
   );
 };
