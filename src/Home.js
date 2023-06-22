@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 
-
-
 const Home = () => {
   const [time, setTime] = useState('');
   const [dayOfWeek, setDayOfWeek] = useState('');
   const [streak, setStreak] = useState(0);
+  const [showCongratulations, setShowCongratulations] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -29,6 +28,11 @@ const Home = () => {
     if (lastVisited && isWithinOneDay(lastVisited)) {
       // Increment the streak if the last visit was within 1 day
       setStreak(prevStreak => prevStreak + 1);
+
+      // Check if the streak is 7 days
+      if (streak === 6) {
+        setShowCongratulations(true);
+      }
     } else {
       // Reset the streak if the last visit was more than 1 day ago
       setStreak(1);
@@ -51,7 +55,7 @@ const Home = () => {
   }, []);
 
   // Function to check if the provided date is within 1 day from the current date
-  const isWithinOneDay = (dateString) => {
+  const isWithinOneDay = dateString => {
     const currentDate = new Date();
     const lastVisitedDate = new Date(dateString);
 
@@ -69,27 +73,27 @@ const Home = () => {
     circle.classList.add(streak === 1 ? 'active' : 'inactive');
   }, [streak]);
 
+  const handleCongratulationsClose = () => {
+    setShowCongratulations(false);
+  };
 
   return (
     <div className="container">
-         <div className="circle" id="circle">
-            <div class = "progress-bar"></div>
-            <span className='streak_number'>Streak: {streak}</span>
-          </div>
-      <div className="dashboard">
-        </div>
-        
-        <div className="widget">
-          <h2>
-            <span className="day">{dayOfWeek}</span>
-          </h2>
-          <div className="clock">
-            <span className="time">{time}</span>
-          </div>
-          {/* <p>Streak: {streak}</p> */}
-        </div>
+      <div className="circle" id="circle">
+        <div className="progress-bar"></div>
+        <span className="streak_number">Streak: {streak} uit 7</span>
       </div>
-    
+
+      {showCongratulations && (
+        <div className="congratulations-alert">
+          <div className="congratulations-content">
+            <h3>Congratulations!</h3>
+            <p>You've reached a 7-day streak!</p>
+            <button onClick={handleCongratulationsClose}>Close</button>
+          </div>
+        </div>
+      )}
+    </div>
   );
 };
 
