@@ -23,7 +23,6 @@ const Home = () => {
           <h2>Feature 2</h2>
           <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
           <button className="cta-button">Sign Up</button>
-
         </div>
       </section>
 
