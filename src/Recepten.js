@@ -5,6 +5,7 @@ const Recepten = () => {
   const [recipes, setRecipes] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
+
   useEffect(() => {
     fetch('http://127.0.0.1:8000/api/recepten')
       .then(response => response.json())
@@ -12,10 +13,6 @@ const Recepten = () => {
         const fetchedRecipes = data.map(recipe => ({
           name: recipe.name,
           category: recipe.categorie,
-          ingredienten: recipe.ingredienten.map(ingredient => ({
-            naam: ingredient.ingredient,
-            hoeveelheid: ingredient.hoeveelheid,
-          })),
           bereidingswijze: recipe.bereidingswijze,
           key: uuidv4(),
           isExpanded: false,
@@ -27,11 +24,18 @@ const Recepten = () => {
       });
   }, []);
 
-  const handleButtonClick = (key, dayIndex, partOfDay) => {
-    const updatedPlanner = [...planner];
-    const recipe = recipes.find(recipe => recipe.key === key);
-    updatedPlanner[dayIndex][partOfDay] = recipe;
-    setPlanner(updatedPlanner);
+  const handleToggleExpand = (key) => {
+    setRecipes(prevRecipes => {
+      return prevRecipes.map(recipe => {
+        if (recipe.key === key) {
+          return {
+            ...recipe,
+            isExpanded: !recipe.isExpanded,
+          };
+        }
+        return recipe;
+      });
+    });
   };
 
   const handleButtonClick = (recipeName, timeOfDay) => {
@@ -48,7 +52,7 @@ const Recepten = () => {
 
   return (
     <div className="container">
-      <input className="searchBar" type="text" placeholder="Search Recipe" value={searchTerm} onChange={handleSearch} />
+      <input type="text" placeholder="Search Recipe" value={searchTerm} onChange={handleSearch} className="searchBar" />
       {filteredRecipes.map(recipe => (
         <div className="dashboard" key={recipe.key}>
           <div className="widget">
