@@ -98,6 +98,14 @@ button {
   padding: 5px 10px;
 }
 
+.marked{
+  background-color: #333;
+}
+
+.bereidingswijzeContainer{
+  padding-left: 10px;
+}
+
 .homebutton {
   filter: brightness(50%);
 }
@@ -115,7 +123,21 @@ button {
 .dagboekbutton {
   filter: brightness(50%);
 }
-
+.searchBar { /* Change class name to "searchBar" */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 94%;
+  padding: 10px;
+  margin-top: 100px;
+  background-color: #fff;
+  z-index: 999;
+}
+.container {
+  text-align: center;
+  padding-bottom: 200px;
+  padding-top: 600px;
+}
 .containerRecipe {
   text-align: center;
   padding-bottom: 200px;
@@ -127,12 +149,6 @@ button {
   height: 80vh;
   background-image: url('background2.jpg');
 }
-.container {
-  text-align: center;
-  height: 100vh;
-  padding-top: 200px;
-}
-
 .containerHome {
   text-align: center;
   padding-bottom: 200px;
