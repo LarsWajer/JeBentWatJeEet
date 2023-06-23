@@ -3,6 +3,8 @@ import { v4 as uuidv4 } from 'uuid';
 
 const Recepten = () => {
   const [recipes, setRecipes] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     fetch('http://127.0.0.1:8000/api/recepten')
@@ -13,6 +15,7 @@ const Recepten = () => {
           category: recipe.categorie,
           bereidingswijze: recipe.bereidingswijze,
           key: uuidv4(),
+          isExpanded: false,
         }));
         setRecipes(fetchedRecipes);
       })
@@ -21,30 +24,55 @@ const Recepten = () => {
       });
   }, []);
 
-  const [isVisible, setIsVisible] = useState(false);
-
-  const handleButtonClick = () => {
-    setIsVisible(!isVisible);
+  const handleToggleExpand = (key) => {
+    setRecipes(prevRecipes => {
+      return prevRecipes.map(recipe => {
+        if (recipe.key === key) {
+          return {
+            ...recipe,
+            isExpanded: !recipe.isExpanded,
+          };
+        }
+        return recipe;
+      });
+    });
   };
+
+  const handleButtonClick = (recipeName, timeOfDay) => {
+    // Handle the button click logic
+  };
+
+  const handleSearch = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const filteredRecipes = recipes.filter(recipe => {
+    return recipe.name.toLowerCase().includes(searchTerm.toLowerCase());
+  });
 
   return (
     <div className="container">
-      {recipes.map(recipe => (
+      <input className="searchBar" type="text" placeholder="Search Recipe" value={searchTerm} onChange={handleSearch} />
+      {filteredRecipes.map(recipe => (
         <div className="dashboard" key={recipe.key}>
           <div className="widget">
             <div className="nameContainer">
-              <h1 className="recipeName"> {recipe.name}</h1>
+              <h1 className="recipeName">{recipe.name}</h1>
             </div>
             <div className="line"></div>
             <div className="categoryContainer">
-              <h2 className="recipeCategory"> Categorie: {recipe.category}</h2>
+              <h2 className="recipeCategory">Categorie: {recipe.category}</h2>
             </div>
-            {isVisible && <div className="extraContent">{recipe.bereidingswijze}</div>}
-            <div className="buttonHolder">
-              <button
-                onClick={handleButtonClick}
-                className="displayButton"
-              ></button>
+            <div>
+              <button onClick={() => handleButtonClick(recipe.name, 'morning')}>Morning</button>
+              <button onClick={() => handleButtonClick(recipe.name, 'afternoon')}>Afternoon</button>
+              <button onClick={() => handleButtonClick(recipe.name, 'evening')}>Evening</button>
+            </div>
+            <div className="extraContent">
+              <button onClick={() => handleToggleExpand(recipe.key)}>
+                {recipe.isExpanded ? 'Hide' : 'Expand'}
+              </button>
+              {recipe.isExpanded && <p>{recipe.bereidingswijze}</p>}
             </div>
           </div>
         </div>
