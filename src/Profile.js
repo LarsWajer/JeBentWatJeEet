@@ -18,21 +18,17 @@ const Profile = () => {
   }
 
   return (
-    <div className='container'>
-      <div className='card'>
-        <div className='profile-container'>
-          <div className='profile-info'>
-            <img
-              className='profile-picture'
-              src='profile.png'
-              alt='Profile'
-            />
-            <h2 className='profile-name'>Welcome, {userData.name}!</h2>
-            <p className='profile-email'>Email: {userData.email}</p>
-            <button className='deleteButton' onClick={deleteAccount}>
+    <div className="containerProfile">
+      <div className="card">
+        <div className="profile-container">
+          <div className="profile-info">
+            <img className="profile-picture" src="profile.png" alt="Profile" />
+            <h2 className="profile-name">Welcome, {userData.name}!</h2>
+            <p className="profile-email">Email: {userData.email}</p>
+            <button className="deleteButton" onClick={deleteAccount}>
               Delete Account
             </button>
-            <button className='logoutButton' onClick={logout}>
+            <button className="logoutButton" onClick={logout}>
               Logout
             </button>
           </div>

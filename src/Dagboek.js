@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-function Dagboek() {
+const Dagboek = () => {
   const daysOfWeek = ['zondag', 'maandag', 'dinsdag', 'woensdag', 'donderdag', 'vrijdag', 'zaterdag'];
   const currentDayIndex = new Date().getDay();
   const currentTime = new Date().getHours();
@@ -10,14 +10,56 @@ function Dagboek() {
   const afternoonRecipe = localStorage.getItem('afternoonRecipe') || '';
   const eveningRecipe = localStorage.getItem('eveningRecipe') || '';
 
-  const getDayClassName = (dayIndex) => {
+  const [planner, setPlanner] = useState([]);
+
+  useEffect(() => {
+    // Retrieve the planner from localStorage on component mount
+    const storedPlanner = localStorage.getItem('planner');
+    if (storedPlanner) {
+      setPlanner(JSON.parse(storedPlanner));
+    }
+  }, []);
+
+  const updatePlanner = updatedPlanner => {
+    setPlanner(updatedPlanner);
+    // Update the planner in localStorage
+    localStorage.setItem('planner', JSON.stringify(updatedPlanner));
+  };
+
+  const handleRecipeRemoveFromPlanner = (partOfDay, dayIndex) => {
+    const updatedPlanner = planner.map((day, index) => {
+      if (index === dayIndex) {
+        return {
+          ...day,
+          [partOfDay]: null,
+        };
+      }
+      return day;
+    });
+    updatePlanner(updatedPlanner);
+  };
+
+  const handleRecipeAddToPlanner = (recipe, partOfDay, dayIndex) => {
+    const updatedPlanner = planner.map((day, index) => {
+      if (index === dayIndex) {
+        return {
+          ...day,
+          [partOfDay]: recipe,
+        };
+      }
+      return day;
+    });
+    updatePlanner(updatedPlanner);
+  };
+
+  const getDayClassName = dayIndex => {
     if (dayIndex === currentDayIndex) {
       return 'highlighted';
     }
     return '';
   };
 
-  const getSectionClassName = (section) => {
+  const getSectionClassName = section => {
     if (
       (section === 'ochtend' && currentTime >= 6 && currentTime < 12) ||
       (section === 'middag' && currentTime >= 12 && currentTime < 18) ||
@@ -121,6 +163,6 @@ function Dagboek() {
       </table>
     </div>
   );
-}
+};
 
 export default Dagboek;

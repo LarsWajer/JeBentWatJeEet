@@ -5,7 +5,6 @@ const Recepten = () => {
   const [recipes, setRecipes] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
-
   useEffect(() => {
     fetch('http://127.0.0.1:8000/api/recepten')
       .then(response => response.json())
@@ -13,6 +12,10 @@ const Recepten = () => {
         const fetchedRecipes = data.map(recipe => ({
           name: recipe.name,
           category: recipe.categorie,
+          ingredienten: recipe.ingredienten.map(ingredient => ({
+            naam: ingredient.ingredient,
+            hoeveelheid: ingredient.hoeveelheid,
+          })),
           bereidingswijze: recipe.bereidingswijze,
           key: uuidv4(),
           isExpanded: false,
@@ -23,7 +26,6 @@ const Recepten = () => {
         console.error('Error:', error);
       });
   }, []);
-
   const handleToggleExpand = (key) => {
     setRecipes(prevRecipes => {
       return prevRecipes.map(recipe => {

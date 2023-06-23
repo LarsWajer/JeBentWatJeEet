@@ -64,7 +64,8 @@ function App() {
               <img src="/jbwjelogo.png" alt="logo" />
             </button>
           </div>
-          <div className="logo-middle"></div>
+          <div className="logo-middle">  
+          </div>
           <div className="logo-right">
             <div className="dropdown">
               <button className="dropdown-button" onClick={toggleDropdown}>

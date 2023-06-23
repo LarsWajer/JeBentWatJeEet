@@ -1,79 +1,52 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { UserContext } from './UserContext';
 
 const Home = () => {
-  const [time, setTime] = useState('');
-  const [dayOfWeek, setDayOfWeek] = useState('');
+  const { userData } = useContext(UserContext);
   const [streak, setStreak] = useState(0);
+  const [showStreakCircle, setShowStreakCircle] = useState(false);
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      const currentDate = new Date();
-      const currentTime = currentDate.toLocaleTimeString([], {
-        hour: '2-digit',
-        minute: '2-digit',
-      });
-      const currentDayOfWeek = currentDate.toLocaleDateString([], {
-        weekday: 'long',
-      });
+    // Fetch and update the streak from the user data or any other source
+    // Here, we are using a random value as an example
+    const randomStreak = Math.floor(Math.random() * 7) + 1;
+    setStreak(randomStreak);
+  }, []);
 
-      setTime(currentTime);
-      setDayOfWeek(currentDayOfWeek);
-    }, 1000);
+  useEffect(() => {
+    if (userData) {
+      setShowStreakCircle(true);
+    }
+  }, [userData]);
 
-    // Retrieve the last visited date from localStorage
-    const lastVisited = localStorage.getItem('lastVisited');
-
-    // Check if lastVisited exists and is not older than 1 day
-    if (lastVisited && isWithinOneDay(lastVisited)) {
-      // Increment the streak if the last visit was within 1 day
-      setStreak(prevStreak => prevStreak + 1);
+  const handleStreakPopup = () => {
+    if (streak === 7) {
+      alert('Congratulations! You have reached your goal for a healthy lifestyle!');
     } else {
-      // Reset the streak if the last visit was more than 1 day ago
-      setStreak(1);
+      alert('Better next time, buddy!');
+      setStreak(0);
     }
-
-    // Update the lastVisited date in localStorage
-    localStorage.setItem('lastVisited', new Date().toISOString());
-
-    return () => {
-      clearInterval(timer);
-    };
-  }, []);
-
-  // Retrieve the streak from localStorage on component mount
-  useEffect(() => {
-    const storedStreak = localStorage.getItem('streak');
-    if (storedStreak) {
-      setStreak(parseInt(storedStreak));
-    }
-  }, []);
-
-  // Function to check if the provided date is within 1 day from the current date
-  const isWithinOneDay = (dateString) => {
-    const currentDate = new Date();
-    const lastVisitedDate = new Date(dateString);
-
-    // Calculate the time difference in milliseconds
-    const timeDifference = currentDate.getTime() - lastVisitedDate.getTime();
-
-    // Convert milliseconds to days
-    const daysDifference = timeDifference / (1000 * 3600 * 24);
-
-    return daysDifference < 1;
   };
 
   return (
-    <div className="container">
-      <div className="dashboard">
-        
+    <div className='container'>
+      <div className="landing-page">
         <div className="widget">
-          <h2>
-            <span className="day">{dayOfWeek}</span>
-          </h2>
-          <div className="clock">
-            <span className="time">{time}</span>
-          </div>
-          <p>Streak: {streak}</p>
+          <h1>Welkom! {userData && userData.name}</h1>
+
+          <section className="features">
+            <div className="feature">
+              <h2>Feature 1</h2>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <button className="cta-button" onClick={handleStreakPopup}>Sign Up</button>
+            </div>
+
+            {showStreakCircle && (
+              <div className="streak-circle">
+                <p>Streak: {streak} days</p>
+              </div>
+            )}
+          </section>
         </div>
       </div>
     </div>

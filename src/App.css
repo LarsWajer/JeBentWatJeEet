@@ -1,5 +1,5 @@
 .container {
-  display: flex;
+    display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -114,10 +114,15 @@ button {
   filter: brightness(50%);
 }
 
+.list {
+  display: flex;
+  flex-direction: column;
+  word-wrap: break-word;
+}
+
 .dagboekbutton {
   filter: brightness(50%);
 }
-
 .searchBar { /* Change class name to "searchBar" */
   position: fixed;
   top: 0;
@@ -128,11 +133,41 @@ button {
   background-color: #fff;
   z-index: 999;
 }
-
 .container {
   text-align: center;
   padding-bottom: 200px;
   padding-top: 600px;
+}
+.containerRecipe {
+  text-align: center;
+  padding-bottom: 200px;
+  padding-top: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+  background-image: url('background2.jpg');
+}
+.containerHome {
+  text-align: center;
+  padding-bottom: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+  background-image: url('background2.jpg');
+}
+.containerProfile {
+  text-align: center;
+  padding-top: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+  background-image: url('background2.jpg');
 }
 
 button:hover {
@@ -199,7 +234,25 @@ button:active {
   border-radius: 8px;
   margin-top: 60px;
 }
-.extraContent {
+.circle {
+  border-radius: 50%;
+  background-color: white;
+  width: 161px;
+  height: 147px;
+  left: 109px;
+  top: 147px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 10px solid;
+  border-color: #92e37c;
+}
+
+.streak_number{
+  position: absolute;
+  margin: 1px;
+}
+*/ .extraContent {
   max-width: 80vw;
   word-wrap: break-word;
 }
@@ -211,9 +264,22 @@ button:active {
     rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
     rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
+.widgetHome {
+  margin-top: 150px;
+  border: 10px #92e37c;
+  background-color: #f2f2f2;
+  border-radius: 8px;
+  width: 60vw;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
 .line {
   height: 3px;
   background-color: black;
+}
+.holder {
+  border: #92e37c;
 }
 .nameContainer {
   border: #333;
@@ -254,6 +320,18 @@ button:active {
     margin: 10px 0;
     padding-top: 10px;
     width: 100%;
+  }
+
+  .circle {
+    position: absolute;
+    width: 161px;
+    height: 147px;
+    left: 109px;
+    top: 147px;
+    border-radius: 50%;
+    border: 10px solid #92e37c;
+    background: #ffffff;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   }
   .dashboard {
     width: 80vw;
@@ -395,11 +473,11 @@ label {
     max-width: 100%;
     padding: 10px;
   }
-  
+
   .forminput {
     padding: 8px;
   }
-  
+
   .formbutton {
     padding: 8px;
   }
@@ -408,5 +486,143 @@ label {
 @media screen and (max-width: 992px) {
   form {
     max-width: 80%;
+  }
+  .searchInput {
+    width: 100%;
+    max-width: 400px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  .searchBar { /* Change class name to "searchBar" */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 94%;
+    padding: 10px;
+    margin-top: 100px;
+    background-color: #fff;
+    z-index: 999;
+  }
+}
+
+.searchInput {
+  width: 100%;
+  max-width: 400px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.searchBar { /* Change class name to "searchBar" */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 94%;
+  padding: 10px;
+  margin-top: 100px;
+  background-color: #fff;
+  z-index: 999;
+}
+
+.features {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.feature {
+  width: 100%;
+  max-width: 300px;
+  margin: 0 10px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+
+.feature img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.feature h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.feature p {
+  font-size: 16px;
+  color: #888;
+}
+
+.cta {
+  margin-bottom: 40px;
+}
+
+.cta h2 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.cta p {
+  font-size: 18px;
+  color: #888;
+  margin-bottom: 20px;
+}
+
+.cta-button {
+  background-color: #92e37c;
+  color: #fff;
+  font-size: 16px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: white;
+  border: 2px solid #92e37c;
+  border-radius: 5px;
+}
+
+/* Responsive Styles */
+
+@media screen and (max-width: 768px) {
+  .feature {
+    margin: 0 5px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .feature {
+    margin: 0;
+    margin-bottom: 20px;
+  }
+}
+
+.streak-circle {
+  /* Your existing styles for the streak circle */
+  /* ... */
+
+  /* Animation styles */
+  animation-name: streakAnimation;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes streakAnimation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
   }
 }
