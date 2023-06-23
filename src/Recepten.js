@@ -28,6 +28,17 @@ const Recepten = () => {
       });
   }, []);
 
+  useEffect(() => {
+    // Initialize the planner state with an empty selection for each day
+    setPlanner(
+      Array(7).fill({
+        ochtend: null,
+        middag: null,
+        avond: null,
+      })
+    );
+  }, []);
+
   const handleButtonClick = (key, dayIndex, partOfDay) => {
     const updatedPlanner = [...planner];
     const recipe = recipes.find(recipe => recipe.key === key);
