@@ -1,4 +1,10 @@
 .container {
+    display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+  background-image: url('background2.jpg');
 }
 
 .week-table {
@@ -519,4 +525,61 @@ label {
   margin-top: 100px;
   background-color: #fff;
   z-index: 999;
+}
+
+.features {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.feature {
+  width: 300px;
+  margin: 0 20px;
+}
+
+.feature img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.feature h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.feature p {
+  font-size: 16px;
+  color: #888;
+}
+
+.cta {
+  margin-bottom: 40px;
+}
+
+.cta h2 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.cta p {
+  font-size: 18px;
+  color: #888;
+  margin-bottom: 20px;
+}
+
+.cta-button {
+  background-color: #007bff;
+  color: #fff;
+  font-size: 16px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #0056b3;
 }
