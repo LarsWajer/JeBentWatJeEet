@@ -3,9 +3,8 @@ import { v4 as uuidv4 } from 'uuid';
 
 const Recepten = () => {
   const [recipes, setRecipes] = useState([]);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [planner, setPlanner] = useState([]);
-
+  const [selectedCategory, setSelectedCategory] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
   useEffect(() => {
     fetch('http://127.0.0.1:8000/api/recepten')
       .then(response => response.json())
@@ -19,24 +18,13 @@ const Recepten = () => {
           })),
           bereidingswijze: recipe.bereidingswijze,
           key: uuidv4(),
-          isVisible: false,
+          isExpanded: false,
         }));
         setRecipes(fetchedRecipes);
       })
       .catch(error => {
         console.error('Error:', error);
       });
-  }, []);
-
-  useEffect(() => {
-    // Initialize the planner state with an empty selection for each day
-    setPlanner(
-      Array(7).fill({
-        ochtend: null,
-        middag: null,
-        avond: null,
-      })
-    );
   }, []);
 
   const handleButtonClick = (key, dayIndex, partOfDay) => {
@@ -46,29 +34,21 @@ const Recepten = () => {
     setPlanner(updatedPlanner);
   };
 
-  const handleRemoveRecipe = (dayIndex, partOfDay) => {
-    const updatedPlanner = [...planner];
-    updatedPlanner[dayIndex][partOfDay] = null;
-    setPlanner(updatedPlanner);
+  const handleButtonClick = (recipeName, timeOfDay) => {
+    // Handle the button click logic
   };
 
-  const handleSearch = event => {
-    setSearchQuery(event.target.value);
+  const handleSearch = (event) => {
+    setSearchTerm(event.target.value);
   };
 
-  const filteredRecipes = recipes.filter(recipe =>
-    recipe.name.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const filteredRecipes = recipes.filter(recipe => {
+    return recipe.name.toLowerCase().includes(searchTerm.toLowerCase());
+  });
 
   return (
     <div className="container">
-      <input
-        className="searchBar"
-        type="text"
-        value={searchQuery}
-        onChange={handleSearch}
-        placeholder="Zoek naar recepten..."
-      />
+      <input className="searchBar" type="text" placeholder="Search Recipe" value={searchTerm} onChange={handleSearch} />
       {filteredRecipes.map(recipe => (
         <div className="dashboard" key={recipe.key}>
           <div className="widget">
@@ -79,42 +59,16 @@ const Recepten = () => {
             <div className="categoryContainer">
               <h2 className="recipeCategory">Categorie: {recipe.category}</h2>
             </div>
-            {recipe.isVisible && (
-              <div className="extraContent">
-                <div className="ingredienten">
-                  <h3>Ingrediënten:</h3>
-                  <ul className="list">
-                    {recipe.ingredienten.map(ingredient => (
-                      <li key={uuidv4()}>
-                        {ingredient.naam} - {ingredient.hoeveelheid}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <h3>Bereidingswijze:</h3>
-                <p>{recipe.bereidingswijze}</p>
-              </div>
-            )}
-
-            <div className="buttonHolder">
-              <button
-                onClick={() => handleButtonClick(recipe.key, 0, 'ochtend')}
-                className="displayButton"
-              >
-                Voeg aan de ochtend
+            <div>
+              <button onClick={() => handleButtonClick(recipe.name, 'morning')}>Morning</button>
+              <button onClick={() => handleButtonClick(recipe.name, 'afternoon')}>Afternoon</button>
+              <button onClick={() => handleButtonClick(recipe.name, 'evening')}>Evening</button>
+            </div>
+            <div className="extraContent">
+              <button onClick={() => handleToggleExpand(recipe.key)}>
+                {recipe.isExpanded ? 'Hide' : 'Expand'}
               </button>
-              <button
-                onClick={() => handleButtonClick(recipe.key, 0, 'middag')}
-                className="displayButton"
-              >
-                Voeg aan de Middag
-              </button>
-              <button
-                onClick={() => handleButtonClick(recipe.key, 0, 'avond')}
-                className="displayButton"
-              >
-                Voeg aan de avond
-              </button>
+              {recipe.isExpanded && <p>{recipe.bereidingswijze}</p>}
             </div>
           </div>
         </div>
